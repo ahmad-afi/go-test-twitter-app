@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS posts (
+  id   BIGINT NOT NULL PRIMARY KEY,
+  text text NOT NULL,
+  created_by varchar(255) NOT NULL,
+  user_id INTEGER NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW() NOT NULL,
+  updated_at TIMESTAMP DEFAULT NOW() NOT NULL
+);
