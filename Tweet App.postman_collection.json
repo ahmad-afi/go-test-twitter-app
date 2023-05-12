@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "4f70d957-b854-4f6c-86bf-ac3723e430bd",
+		"name": "Tweet App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12114597"
+	},
+	"item": [
+		{
+			"name": "Post Tweet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"{{$randomPhrase}}\",\r\n    \"createdBy\":\"{{$randomUserName}}\",\r\n    \"userId\":{{$randomInt}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/tweet",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tweet"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post Tweet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":\"{{$randomPhrase}}\",\r\n    \"createdBy\":\"{{$randomUserName}}\",\r\n    \"userId\":{{$randomInt}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tweet",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tweet"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 12 May 2023 04:30:34 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "82"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"TWEET CREATED\",\n    \"errors\": null,\n    \"data\": 1656879515520995328\n}"
+				}
+			]
+		},
+		{
+			"name": "Get lists tweets",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"{{$randomPhrase}}\",\r\n    \"createdBy\":\"{{$randomUserName}}\",\r\n    \"userId\":{{$randomInt}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/tweet?page=1&limit=2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tweet"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get lists tweets",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":\"{{$randomPhrase}}\",\r\n    \"createdBy\":\"{{$randomUserName}}\",\r\n    \"userId\":{{$randomInt}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tweet?page=1&limit=2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tweet"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 12 May 2023 09:12:52 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "641"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "15cf91a3-6ea2-4dfe-ba28-9bddc94f2830"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"SUCCEED GET LIST TWEETS\",\n    \"errors\": null,\n    \"data\": {\n        \"posts\": [\n            {\n                \"id\": 1656949895375884288,\n                \"text\": \"overriding the circuit won't do anything, we need to compress the haptic JBOD protocol!\",\n                \"createdBy\": \"Kendall_OConner\",\n                \"userId\": 39,\n                \"created_at\": \"2023-05-12T09:10:14.357222Z\",\n                \"updated_at\": \"2023-05-12T09:10:14.357222Z\"\n            },\n            {\n                \"id\": 1656949895057117184,\n                \"text\": \"calculating the feed won't do anything, we need to navigate the digital EXE capacitor!\",\n                \"createdBy\": \"Katlynn59\",\n                \"userId\": 133,\n                \"created_at\": \"2023-05-12T09:10:14.281446Z\",\n                \"updated_at\": \"2023-05-12T09:10:14.281446Z\"\n            }\n        ],\n        \"meta\": {\n            \"page\": 1,\n            \"limit\": 2,\n            \"totalPage\": 6,\n            \"totalRecord\": 11\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Tweets by ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"{{$randomPhrase}}\",\r\n    \"createdBy\":\"{{$randomUserName}}\",\r\n    \"userId\":{{$randomInt}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/tweet/1656914836816138240",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tweet",
+						"1656914836816138240"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Tweets by ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":\"{{$randomPhrase}}\",\r\n    \"createdBy\":\"{{$randomUserName}}\",\r\n    \"userId\":{{$randomInt}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tweet/1656949336778477568",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tweet",
+								"1656949336778477568"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 12 May 2023 09:08:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "315"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "bba6f5e5-f132-4ee7-b910-3659c469b8db"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"SUCCEED GET TWEET BY ID\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1656949336778477568,\n        \"text\": \"I'll synthesize the redundant PNG hard drive, that should driver the SQL card!\",\n        \"createdBy\": \"Evan.Goldner40\",\n        \"userId\": 354,\n        \"created_at\": \"2023-05-12T09:08:01.177439Z\",\n        \"updated_at\": \"2023-05-12T09:08:01.177439Z\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost",
+			"type": "string"
+		}
+	]
+}

@@ -50,3 +50,9 @@ twitter-app
 |-- cmd      # Contains executables codes
 |-- internal # Application service packages      
 ```
+
+## HOW TO RUN ON LOCAL  
+1. Run databse with command `make run.db` or `docker compose up -d`   
+2. Run the migration with command `make migrate.up`
+3. Build with command `make build`     
+4. Run the application with command `make run`
