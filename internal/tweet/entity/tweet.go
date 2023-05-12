@@ -16,4 +16,16 @@ type (
 		Limit int `query:"limit"`
 		Page  int `query:"page"`
 	}
+
+	ListPost struct {
+		Posts []Posts `json:"posts"`
+		Meta  Meta    `json:"meta"`
+	}
+
+	Meta struct {
+		Page        int `json:"page"`
+		Limit       int `json:"limit"`
+		TotalPage   int `json:"totalPage"`
+		TotalRecord int `json:"totalRecord"`
+	}
 )

@@ -42,23 +42,33 @@ func New(connectionString string) (*storeClient, error) {
 func (s *storeClient) Post(ctx context.Context, params entity.Posts) (res int64, err error) {
 	_, err = s.Db.NamedExecContext(ctx, "insert into posts (id,text,created_by,user_id) values(:id,:text,:created_by,:user_id)", params)
 	if err != nil {
+		log.Println(err)
 		return res, err
 	}
 
 	return params.ID, nil
 }
 
-func (s *storeClient) GetList(ctx context.Context, filter entity.FilterPosts) (res []entity.Posts, err error) {
-	err = s.Db.SelectContext(ctx, &res, "SELECT id,text,created_by,user_id,created_at,updated_at from posts order by created_at desc limit ? offset ?", filter.Limit, filter.Page)
+func (s *storeClient) GetList(ctx context.Context, filter entity.FilterPosts) (res []entity.Posts, count int64, err error) {
+	countQuery := "SELECT count(*) from posts"
+	err = s.Db.GetContext(ctx, &count, countQuery)
 	if err != nil {
-		return res, err
+		log.Println(err)
+		return res, count, err
+	}
+
+	err = s.Db.SelectContext(ctx, &res, "SELECT id,text,created_by,user_id,created_at,updated_at from posts order by created_at desc limit $1 offset $2", filter.Limit, filter.Page)
+	if err != nil {
+		log.Println(err)
+		return res, count, err
 	}
 	return
 }
 
 func (s *storeClient) GetByID(ctx context.Context, id string) (res entity.Posts, err error) {
-	err = s.Db.GetContext(ctx, &res, "SELECT id,text,created_by,user_id,created_at,updated_at from  posts where id = ? ", id)
+	err = s.Db.GetContext(ctx, &res, "SELECT id,text,created_by,user_id,created_at,updated_at from posts where id = $1 ", id)
 	if err != nil {
+		log.Println(err)
 		return res, err
 	}
 	return

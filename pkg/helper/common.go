@@ -1,6 +1,7 @@
 package helper
 
 import (
+	"math"
 	"path/filepath"
 	"runtime"
 )
@@ -17,3 +18,19 @@ var (
 	// Root folder of this project
 	ProjectRootPath = filepath.Join(filepath.Dir(b), "../../")
 )
+
+func GetMeta(limit, pages, totalRows *int) (totalPage int) {
+	if *totalRows < *limit {
+		*limit = *totalRows
+	}
+
+	if *pages < 1 {
+		*pages = 1
+	}
+
+	if *totalRows > 0 && *limit > 0 {
+		return int(math.Ceil(float64(*totalRows) / float64(*limit)))
+	}
+	return 0
+
+}

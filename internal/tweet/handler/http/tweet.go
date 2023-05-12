@@ -35,9 +35,31 @@ func (th *TweetHandler) PostTweet(c *fiber.Ctx) error {
 }
 
 func (th *TweetHandler) GetListTweets(c *fiber.Ctx) error {
-	return helper.BuildResponse(c, true, "SUCCEED GET LIST TWEETS", "", nil, http.StatusOK)
+	params := new(entity.FilterPosts)
+	if err := c.QueryParser(params); err != nil {
+		return helper.BuildResponse(c, false, "FAILED TO PARSER DATA", err.Error(), nil, http.StatusBadRequest)
+	}
+
+	ctx := c.Context()
+	res, err := th.tweetSvc.GetList(ctx, *params)
+	if err != nil {
+		return helper.BuildResponse(c, false, "FAILED TO GET LIST DATA", err.Err.Error(), nil, err.Code)
+	}
+
+	return helper.BuildResponse(c, true, "SUCCEED GET LIST TWEETS", "", res, http.StatusOK)
 }
 
 func (th *TweetHandler) GetTweetByID(c *fiber.Ctx) error {
-	return helper.BuildResponse(c, true, "SUCCEED GET TWEET BY ID", "", nil, http.StatusOK)
+	id := c.Params("id")
+	if id == "" {
+		return helper.BuildResponse(c, false, "path cant be empty", "path cant be empty", nil, http.StatusBadRequest)
+	}
+
+	ctx := c.Context()
+	res, err := th.tweetSvc.GetByID(ctx, id)
+	if err != nil {
+		return helper.BuildResponse(c, false, "FAILED TO GET DATA", err.Err.Error(), nil, err.Code)
+	}
+
+	return helper.BuildResponse(c, true, "SUCCEED GET TWEET BY ID", "", res, http.StatusOK)
 }
