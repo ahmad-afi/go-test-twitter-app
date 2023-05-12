@@ -51,8 +51,8 @@ twitter-app
 |-- internal # Application service packages      
 ```
 
-## HOW TO RUN ON LOCAL  
-1. Run databse with command `make run.db` or `docker compose up -d`   
-2. Run the migration with command `make migrate.up`
-3. Build with command `make build`     
-4. Run the application with command `make run`
+## HOW TO RUN LOCALLY   
+1. Start the database by running the command `make run.db` or `docker-compose up -d`.
+2. Perform the migration using the command `make migrate.up`.
+3. Build the application with the command `make build`.
+4. Run the application using the command `make run`.
